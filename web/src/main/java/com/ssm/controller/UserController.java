@@ -1,6 +1,6 @@
 package com.ssm.controller;
 
-import com.ssm.services.UserServices;
+import com.ssm.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -9,10 +9,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class UserController {
 
     @Autowired
-    private UserServices userServices;
+    private UserService userService;
 
     @RequestMapping("/findAll")
-    public void findAll(){
-        userServices.findAll();
+    public String findAll(){
+        System.out.println("12146");
+        userService.findAll();
+        return "list";
+
     }
 }

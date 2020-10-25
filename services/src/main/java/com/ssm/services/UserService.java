@@ -4,7 +4,7 @@ import com.ssm.entity.User;
 
 import java.util.List;
 
-public interface UserServices {
+public interface UserService {
 
     List<User> findAll();
 
