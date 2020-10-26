@@ -13,12 +13,13 @@
 	http://www.springframework.org/schema/tx
 	http://www.springframework.org/schema/tx/spring-tx.xsd">
 
+    <context:annotation-config />
     <!--开启注解的扫描，希望处理service和dao，controller不需要Spring框架去处理-->
     <context:component-scan base-package="com.ssm" >
         <!--配置哪些注解不扫描-->
         <context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller" />
     </context:component-scan>
-
+    <aop:aspectj-autoproxy proxy-target-class="true"/>
     <!--    配置连接池-->
     <context:property-placeholder location="classpath:db.properties"></context:property-placeholder>
     <bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
@@ -45,6 +46,9 @@
                 </bean>
             </array>
         </property>
+        <!-- 设置mapper文件的位置 -->
+        <property name="MapperLocations"
+                  value="classpath*:mapper/*.xml"/>
     </bean>
 
     <!--    配置Sping的声明事务管理-->
@@ -54,5 +58,10 @@
     </bean>
     <tx:annotation-driven transaction-manager="dataSourceTransactionManager"/>
 
+    <!--    配置Dao接口所在包-->
+    <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+        <property name="basePackage" value="com.ssm.dao"></property>
+        <property name="sqlSessionFactoryBeanName" value="sessionFactory"/>
+    </bean>
 
 </beans>

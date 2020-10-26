@@ -17,8 +17,11 @@
     <!--开启SpringMVC注解的支持-->
     <mvc:annotation-driven />
 
-<!--开启注解扫描，只扫描Controller注解-->
-    <context:component-scan base-package="com.ssm.controller" />
+    <!--开启注解扫描，只扫描Controller注解-->
+    <context:component-scan base-package="com.ssm" use-default-filters="false">
+        <!--只扫描控制器。  -->
+        <context:include-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
+    </context:component-scan>
 
     <!--
         支持AOP的注解支持，AOP底层使用代理技术

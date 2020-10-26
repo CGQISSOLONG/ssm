@@ -6,7 +6,7 @@ import java.io.Serializable;
 @Data
 public class User implements Serializable {
 
-    private String strUserName;
-    private String strPassword;
+    private String userName;
+    private String password;
 
 }
