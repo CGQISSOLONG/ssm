@@ -13,15 +13,15 @@
 	http://www.springframework.org/schema/tx
 	http://www.springframework.org/schema/tx/spring-tx.xsd">
 
-    <context:annotation-config />
     <!--开启注解的扫描，希望处理service和dao，controller不需要Spring框架去处理-->
     <context:component-scan base-package="com.ssm" >
         <!--配置哪些注解不扫描-->
         <context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller" />
     </context:component-scan>
-    <aop:aspectj-autoproxy proxy-target-class="true"/>
-    <!--    配置连接池-->
-    <context:property-placeholder location="classpath:db.properties"></context:property-placeholder>
+<!--    <aop:aspectj-autoproxy proxy-target-class="true"/>-->
+
+    <!--配置连接池-->
+    <context:property-placeholder location="classpath*:db.properties" />
     <bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
         <property name="driverClass" value="${jdbc.driver}"></property>
         <property name="jdbcUrl" value="${jdbc.url}"></property>
@@ -29,9 +29,11 @@
         <property name="password" value="${jdbc.password}"></property>
     </bean>
 
-    <!--    吧交给IOC管理SqlSessionFcactory-->
+    <!--    交给IOC管理SqlSessionFcactory-->
     <bean id="sessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+        <property name="configLocation" value="classpath:mybatis-config.xml" />
         <property name="dataSource" ref="dataSource"/>
+        <property name="typeAliasesPackage" value="com.ssm.entity"/>
         <!--        配置pagehelper-->
         <property name="plugins">
             <array>
@@ -51,17 +53,17 @@
                   value="classpath*:mapper/*.xml"/>
     </bean>
 
+    <!--    配置Dao接口所在包-->
+    <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+        <property name="basePackage" value="com.ssm.dao" />
+        <property name="sqlSessionFactoryBeanName" value="sessionFactory"/>
+    </bean>
+
     <!--    配置Sping的声明事务管理-->
     <!--    配制事务管理器-->
     <bean id="dataSourceTransactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
         <property name="dataSource" ref="dataSource"/>
     </bean>
     <tx:annotation-driven transaction-manager="dataSourceTransactionManager"/>
-
-    <!--    配置Dao接口所在包-->
-    <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
-        <property name="basePackage" value="com.ssm.dao"></property>
-        <property name="sqlSessionFactoryBeanName" value="sessionFactory"/>
-    </bean>
 
 </beans>
