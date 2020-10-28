@@ -17,7 +17,6 @@ public class UserController {
     private UserService userService;
 
     @GetMapping("/findAll")
-    @LogAopAnnotation
     public String findAll(){
         System.out.println("12146");
         List<User> all = userService.findAll();

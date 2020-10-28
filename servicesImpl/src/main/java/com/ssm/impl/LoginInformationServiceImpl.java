@@ -1,5 +1,6 @@
 package com.ssm.impl;
 
+import com.ssm.commom.aop.LogAopAnnotation;
 import com.ssm.dao.LoginInformationDao;
 import com.ssm.services.LoginInformationService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,6 +18,7 @@ public class LoginInformationServiceImpl {
      * 登录信息插入
      * @param loginTime
      */
+    @LogAopAnnotation
     void insertLoginInformation(String loginTime){
         loginInformationDao.insertLoginInformation(loginTime);
     }
