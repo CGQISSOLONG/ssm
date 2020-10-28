@@ -59,5 +59,14 @@ public class BaseResultUtil {
         return result;
     }
 
+    /**
+     * 全局基类自定义异常 异常处理
+     * @param e
+     * @return
+     */
+    public static BaseResult error(BaseException e){
+        return error(e.getCode(),e.getMessage());
+    }
+
 
 }

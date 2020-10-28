@@ -1,5 +1,6 @@
 package com.ssm.controller;
 
+import com.ssm.commom.aop.LogAopAnnotation;
 import com.ssm.commom.base.BaseResult;
 import com.ssm.commom.utils.BaseResultUtil;
 import com.ssm.entity.User;
@@ -16,6 +17,7 @@ public class UserController {
     private UserService userService;
 
     @GetMapping("/findAll")
+    @LogAopAnnotation
     public String findAll(){
         System.out.println("12146");
         List<User> all = userService.findAll();
