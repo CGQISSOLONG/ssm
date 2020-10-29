@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.ssm.dao.LoginInformationDao">
-    <insert id="insertLoginInformation" parameterType="string" useGeneratedKeys="true" keyProperty="id">
+    <insert id="insertLoginInformation" parameterType="com.ssm.entity.LoginInformation" useGeneratedKeys="true" keyProperty="id">
         insert into login_information(LoginTime) VALUES(#{loginTime})
     </insert>
 </mapper>

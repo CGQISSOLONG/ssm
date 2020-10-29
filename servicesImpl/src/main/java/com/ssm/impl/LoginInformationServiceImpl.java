@@ -9,7 +9,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 @Service
 @Transactional
-public class LoginInformationServiceImpl {
+public class LoginInformationServiceImpl implements LoginInformationService {
 
     @Autowired
     private LoginInformationDao loginInformationDao;
@@ -18,8 +18,8 @@ public class LoginInformationServiceImpl {
      * 登录信息插入
      * @param loginTime
      */
-    @LogAopAnnotation
-    void insertLoginInformation(String loginTime){
+    @Override
+    public void insertLoginInformation(String loginTime){
         loginInformationDao.insertLoginInformation(loginTime);
     }
 }

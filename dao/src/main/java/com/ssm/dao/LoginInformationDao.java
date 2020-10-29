@@ -1,7 +1,8 @@
 package com.ssm.dao;
 
-import com.ssm.entity.LoginInformation;
+import org.springframework.stereotype.Repository;
 
+@Repository
 public interface LoginInformationDao {
 
     /**

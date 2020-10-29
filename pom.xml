@@ -35,6 +35,8 @@
         <log4j.version>1.2.12</log4j.version>
         <!--mybatis版本-->
         <mybatis.version>3.4.5</mybatis.version>
+        <!--aspectjweaver版本-->
+        <aspectjweaver.version>1.9.5</aspectjweaver.version>
     </properties>
 
     <dependencies>
@@ -42,7 +44,7 @@
         <dependency>
             <groupId>org.aspectj</groupId>
             <artifactId>aspectjweaver</artifactId>
-            <version>1.6.8</version>
+            <version>${aspectjweaver.version}</version>
         </dependency>
 
         <!--spring版本控制-->

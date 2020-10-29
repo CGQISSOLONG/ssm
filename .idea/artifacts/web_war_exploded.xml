@@ -10,6 +10,13 @@
           <element id="module-output" name="entity" />
           <element id="module-output" name="servicesImpl" />
           <element id="module-output" name="dao" />
+          <element id="jpa-descriptors" facet="web/jpa/JPA" />
+          <element id="module-output" name="common" />
+          <element id="jpa-descriptors" facet="common/jpa/JPA" />
+          <element id="jpa-descriptors" facet="dao/jpa/JPA" />
+          <element id="jpa-descriptors" facet="entity/jpa/JPA" />
+          <element id="jpa-descriptors" facet="services/jpa/JPA" />
+          <element id="jpa-descriptors" facet="servicesImpl/jpa/JPA" />
         </element>
         <element id="directory" name="lib">
           <element id="library" level="project" name="Maven: org.projectlombok:lombok:1.18.12" />
@@ -37,8 +44,11 @@
           <element id="library" level="project" name="Maven: com.github.jsqlparser:jsqlparser:1.0" />
           <element id="library" level="project" name="Maven: org.springframework:spring-context-support:5.0.2.RELEASE" />
           <element id="library" level="project" name="Maven: org.springframework:spring-orm:5.0.2.RELEASE" />
+          <element id="library" level="project" name="Maven: org.projectlombok:lombok:1.16.8" />
+          <element id="library" level="project" name="Maven: org.aspectj:aspectjweaver:1.9.5" />
         </element>
       </element>
+      <element id="javaee-facet-resources" facet="web/web/webapp" />
     </root>
   </artifact>
 </component>
